@@ -37,17 +37,18 @@ forward 4 positions.
 from read_file import read_input
 
 
-def computer(optcodes):
+def computer(input_optcodes):
     """Read optcodes and computer, return output."""
+    optcodes = input_optcodes.copy()
     skip4_flag = False
     skip4_count = 0
 
     for i in range(len(optcodes)):
-        print(i, optcodes[i])
-        print(optcodes)
+        # print(i, optcodes[i])
+        # print(optcodes)
         if skip4_flag:
             if skip4_count < 3:
-                print('skipforward')
+                # print('skipforward')
                 skip4_count += 1
                 continue
         if optcodes[i] == 99:
@@ -55,23 +56,23 @@ def computer(optcodes):
         skip4_flag = False
         skip4_count = 0
         if optcodes[i] == 1:
-            print(f'Replacing position[{optcodes[i+3]}],'
-                  f' value({optcodes[optcodes[i+3]]}) by '
-                  f'position[{optcodes[i+1]}], value('
-                  f'{optcodes[optcodes[i+1]]}) + position[{optcodes[i+2]}]'
-                  f', value({optcodes[optcodes[i+2]]}) = '
-                  f'{optcodes[optcodes[i+1]] + optcodes[optcodes[i+2]]}')
+            # print(f'Replacing position[{optcodes[i+3]}],'
+            #       f' value({optcodes[optcodes[i+3]]}) by '
+            #       f'position[{optcodes[i+1]}], value('
+            #       f'{optcodes[optcodes[i+1]]}) + position[{optcodes[i+2]}]'
+            #       f', value({optcodes[optcodes[i+2]]}) = '
+            #       f'{optcodes[optcodes[i+1]] + optcodes[optcodes[i+2]]}')
             optcodes[optcodes[i + 3]] = (optcodes[optcodes[i + 1]] +
                                          optcodes[optcodes[i + 2]])
             skip4_flag = True
 
         elif optcodes[i] == 2:
-            print(f'Replacing position[{optcodes[i+3]}],'
-                  f'value({optcodes[optcodes[i+3]]}) by '
-                  f'position[{optcodes[i+1]}], value('
-                  f'{optcodes[optcodes[i+1]]}) * position[{optcodes[i+2]}]'
-                  f', value({optcodes[optcodes[i+2]]}) = '
-                  f'{optcodes[optcodes[i+1]] * optcodes[optcodes[i+2]]}')
+            # print(f'Replacing position[{optcodes[i+3]}],'
+            #       f'value({optcodes[optcodes[i+3]]}) by '
+            #       f'position[{optcodes[i+1]}], value('
+            #       f'{optcodes[optcodes[i+1]]}) * position[{optcodes[i+2]}]'
+            #       f', value({optcodes[optcodes[i+2]]}) = '
+            #       f'{optcodes[optcodes[i+1]] * optcodes[optcodes[i+2]]}')
             optcodes[optcodes[i + 3]] = (optcodes[optcodes[i + 1]] *
                                          optcodes[optcodes[i + 2]])
             skip4_flag = True
